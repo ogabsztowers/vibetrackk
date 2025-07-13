@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="icon"
+        href="../assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
+</head>
+
+<style>
+    .fundo {
+        background-image: url(../assets/imgs/luxa.org-opacity-changed-._van-gogh-noite-estrelada-sobre-rodano-d.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .janela {
+        color: #cbccd1;
+        align-self: center;
+        justify-self: center;
+        padding: 40px;
+        width: 80%;
+        height: max-content;
+        border-radius: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-color: #1a1a2ed8;
+        box-shadow: 5px 2px 8px rgba(5, 7, 37, 0.753);
+    }
+
+    .header-left {
+        width: 30%;
+        padding: 20px;
+        float: left;
+    }
+    .header-left h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+    .header-left .hello {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    .header {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+    .navbar {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+    }
+    .grafico {
+        height: 500px;
+        width: 100%;
+        margin-left: 100px;
+        margin-bottom: 40px;
+        width: 40%;
+    }
+    .h1Container {
+        font-family: "Cedarville Cursive", cursive;
+        width: 100%;
+        display: flex;
+        margin-bottom: 40px;
+        font-style: normal;
+        justify-content: center;
+    }
+    .dash-cont {
+        width: 90%;
+        display: flex;
+        margin-left: 40px;
+    }
+    .graficoUsuarios {
+        justify-self: center;
+        align-self: center;
+        width: 35%;
+        margin-left: 90px;
+    }
+    .divKpi {
+        display: flex;
+        justify-content: center;
+        flex-direction: row;
+        margin-bottom: 40px;
+    }
+    .divKpi div {
+        width: max-content;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        font-size: 15px;
+        height: max-content;
+        margin-right: 40px;
+        margin-left: 40px;
+        padding: 20px;
+        background-color: #2e2e4d;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        border-radius: 20px;
+    }
+</style>
+
+<body>
+    <div class="fundo">
+
+        <div class="header">
+            <div class="container">
+                <h1 class="titulo">VibeTrack</h1>
+                <ul class="navbar">
+                    <li>
+                        <a href="/index.html">inicio</a>
+                    </li>
+                    <li>
+                        <a href="/simulador.html">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="/login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="/cadastro.html">Cadastro</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/cards.html">quiz</a>
+                    </li>
+                    <li class="agora">
+                        <a href="/dashboard/dashboard.html">dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/mural.html">forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="h1Container">
+        <h1>Bem vindo a sua pagina da dashboard</h1>
+    </div>
+    <div class="divKpi">
+        <div class="KPI"></div>
+    </div>
+
+    <div class="dash-cont">
+
+        <div class="grafico">
+            <div style="text-align:center; margin-bottom: 20px;">
+                <label for="filtroGrafico">Visualizar:</label>
+                <select id="filtroGrafico" onchange="atualizarGraficoGeral()">
+                    <option value="usuario">Meus resultados</option>
+                    <option value="geral">Acertos da comunidade</option>
+                    <option value="errosCom">Erros na comunidade</option>
+                </select>
+            </div>
+            <canvas id="myChart"></canvas>
+        </div>
+
+        <div class="graficoUsuarios">
+            <div style="text-align:center; margin-bottom: 20px;">
+                <label for="filtroEstilo">Visualizar:</label>
+                <select id="filtroEstilo" onchange="atualizarGraficoEstilos()">
+                    <option value="usuarios">Usuários por estilo</option>
+                    <option value="acertos">Acertos por estilo</option>
+                </select>
+            </div>
+            <canvas id="myChart2"></canvas>
+        </div>
+
+
+    </div>
+
+    <footer>
+        <p>©VibeTrack 2025</p>
+        <div>
+            <h2>Desenvolvido por Gabriel Rapani Torres, com o auxilio dos professores (SPtech)</h2>
+        </div>
+        <p>version 1.0</p>
+    </footer>
+
+</body>
+
+</html>
+<script src="scriptDash.js"></script>

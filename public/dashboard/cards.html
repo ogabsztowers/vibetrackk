@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="icon"
+        href="../assets/imgs/png-transparent-music-note-music-note-musical-notes-musical-design-symbol-sound-melody-music-notes-v.svg">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Musical | VibeTrack</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet" />
+
+</head>
+<style>
+    .fundo {
+        background-image: url(../assets/imgs/luxa.org-opacity-changed-._van-gogh-noite-estrelada-sobre-rodano-d.jpg);
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    .secao-jogo {
+        text-align: center;
+        color: white;
+        font-family: 'Quicksand', sans-serif;
+    }
+    .header {
+        background-color: rgba(0, 0, 0, 0.7);
+        padding: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <div class="fundo">
+
+
+        <div class="header">
+            <div class="container">
+                <h1 class="titulo">VibeTrack</h1>
+                <ul class="navbar">
+                    <li>
+                        <a href="/index.html">inicio</a>
+                    </li>
+                    <li>
+                        <a href="/simulador.html">Sobre</a>
+                    </li>
+                    <li>
+                        <a href="/login.html">Login</a>
+                    </li>
+                    <li>
+                        <a href="/cadastro.html">Cadastro</a>
+                    </li>
+                    <li class="agora">
+                        <a href="/dashboard/cards.html">quiz</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/dashboard.html">dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/mural.html">forum</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <section class="secao-jogo">
+            <button id="iniciar-jogo-btn">Iniciar Quiz Musical!</button>
+
+            <div id="jogo-container" class="oculto">
+                <div id="pergunta-container">
+                    <p id="pergunta"></p>
+                </div>
+                <div id="respostas-container">
+                    <button class="resposta-btn" data-index="0"></button>
+                    <button class="resposta-btn" data-index="1"></button>
+                    <button class="resposta-btn" data-index="2"></button>
+                    <button class="resposta-btn" data-index="3"></button>
+                </div>
+                <div id="feedback-container" class="oculto">
+                    <p id="feedback-mensagem"></p>
+                    <button id="proxima-pergunta-btn">Próxima Pergunta</button>
+                    <div class="grafico-container">
+                        <p>acertos da comunidade:</p>
+                        <canvas id="grafico1"></canvas>
+
+                    </div>
+                </div>
+            </div>
+
+            <div id="resultado-final">
+                <h2>Parabéns!</h2>
+                <p id="mensagem-resultado"></p>
+                <button onclick="location.reload()">Reiniciar Quiz</button>
+            </div>
+        </section>
+    </div>
+    <footer>
+
+
+        <p>©VibeTrack 2025</p>
+        <div>
+            <h2>Desenvolvido por Gabriel Rapani Torres, com o auxilio dos professores (SPtech)</h2>
+        </div>
+        <p>version 1.0</p>
+    </footer>
+
+</body>
+
+</html>
+<script src="dados.js"></script>
+<script src="scriptCards.js"></script>
