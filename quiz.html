@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<section id="para-ti" class="secao-jogo">
+
+    <div id="jogo-container" class="oculto">
+        <div id="pergunta-container">
+            <p id="pergunta"></p>
+        </div>
+        <div id="respostas-container">
+            <button class="resposta-btn" data-index="0"></button>
+            <button class="resposta-btn" data-index="1"></button>
+            <button class="resposta-btn" data-index="2"></button>
+            <button class="resposta-btn" data-index="3"></button>
+        </div>
+        <div id="feedback-container" class="oculto">
+            <p id="feedback-mensagem"></p>
+            <button id="proxima-pergunta-btn">Próxima Pergunta</button>
+        </div>
+        <div id="resultado-final" class="oculto">
+            <h2>Parabéns</h2>
+            <p id="mensagem-resultado"></p>
+        </div>
+    </div>
+    <button id="iniciar-jogo-btn">Iniciar quiz!</button>
+</section>
+</body>
+
+<style>
+    .header-jogo {
+    background-color: #ffebee; 
+    color: grey; 
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid grey;  
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 30px;
+}
+
+.logo-jogo h2 {
+    margin: 0;
+    font-size: 2em;
+    font-weight: lighter;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo-jogo p {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: grey;
+    font-style: italic;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.menu-jogo ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-jogo li {
+    margin-right: 60px;
+    gap: 20px;
+}
+.menu-jogo li:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+}
+
+.menu-jogo li:first-child {
+    margin-left: 0;
+}
+
+.menu-jogo a {
+    text-decoration: none;
+    color: grey;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease-in-out;
+}
+
+.menu-jogo a:hover {
+    color: grey; 
+}
+
+body.pagina-jogo {
+    font-family: 'Quicksand', sans-serif; 
+    background-color: #fce4ec;     margin: 0;
+    padding-top: 70px; 
+}
+.header-jogo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.container-jogo {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+    .secao-jogo {
+        text-align: center;
+        padding: 30px;
+        margin-top: 200px;
+    }
+
+    .secao-jogo h2 {
+        color: grey;
+        margin-bottom: 20px;
+    }
+
+    #jogo-container {
+        background-color: white; 
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        margin-top: 20px;
+    }
+
+    #pergunta-container p {
+        font-size: 1.2em;
+        color: grey; 
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    #respostas-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+    .resposta-btn {
+        background-color: grey; 
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+    }
+
+    .resposta-btn:hover {
+        background-color: grey;
+        transform: scale(1.02);
+    }
+
+    .resposta-btn.correta {
+        background-color: #4caf50;}
+
+    .resposta-btn.incorreta {
+        background-color: #f44336
+    }
+
+    #feedback-container {
+        margin-top: 20px;
+        font-size: 1.1em;
+        color: grey;
+        font-weight: bold;
+    }
+
+    #proxima-pergunta-btn {
+        background-color: grey;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1em;
+        margin-top: 15px;
+        transition: background-color 0.3s ease-in-out;
+    }
+
+    #proxima-pergunta-btn:hover {
+        background-color: grey;
+    }
+
+    #resultado-final h2 {
+        color: grey;
+        margin-bottom: 15px;
+    }
+
+    #resultado-final p {
+        font-size: 1.2em;
+        color: grey;
+        font-weight: bold;
+    }
+
+    #iniciar-jogo-btn {
+        background-color: grey;
+        color: white;
+        border: none;
+        padding: 18px 35px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 1.1em;
+        transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        margin-top: 20px;
+    }
+
+    #iniciar-jogo-btn:hover {
+        background-color: grey;
+        transform: scale(1.05);
+    }
+
+    .oculto {
+        display: none;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const oculto = document.querySelector('.oculto');
+        const iniciarJogoBtn = document.getElementById('iniciar-jogo-btn');
+        const jogoContainer = document.getElementById('jogo-container');
+        const perguntaContainer = document.getElementById('pergunta');
+        const respostasContainer = document.getElementById('respostas-container');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackMensagem = document.getElementById('feedback-mensagem');
+        const proximaPerguntaBtn = document.getElementById('proxima-pergunta-btn');
+        const resultadoFinal = document.getElementById('resultado-final');
+        const mensagemResultado = document.getElementById('mensagem-resultado');
+        const respostaBotoes = document.querySelectorAll('.resposta-btn');
+
+        let perguntas = [
+            {
+                pergunta: "",
+                respostas: ["", "", "", ""],
+                respostaCorreta: 2
+                },
+            {
+                pergunta: "",
+                respostas: ["", "", "", ""],
+                respostaCorreta: 3 
+                },
+            {
+                pergunta: "",
+                respostas: ["", "", "", ""],
+                respostaCorreta: 3
+            },
+        ];
+
+        let perguntaAtualIndex = 0;
+        let pontuacao = 0;
+
+        function iniciarJogo() {
+            iniciarJogoBtn.classList.add('oculto');
+            jogoContainer.classList.remove('oculto');
+            exibirProximaPergunta();
+        }
+
+        function exibirProximaPergunta() {
+            resetRespostas();
+            feedbackContainer.classList.add('oculto');
+            proximaPerguntaBtn.classList.add('oculto');
+
+            if (perguntaAtualIndex < perguntas.length) {
+                const perguntaAtual = perguntas[perguntaAtualIndex];
+                perguntaContainer.textContent = perguntaAtual.pergunta;
+
+                perguntaAtual.respostas.forEach((resposta, index) => {
+                    respostaBotoes[index].textContent = resposta;
+                    respostaBotoes[index].dataset.index = index;
+                    respostaBotoes[index].removeEventListener('click', verificarResposta); 
+                    respostaBotoes[index].addEventListener('click', verificarResposta);
+                });
+            } else {
+                exibirResultadoFinal();
+            }
+        }
+
+        function verificarResposta(evento) {
+            const botaoSelecionado = evento.target;
+            const respostaSelecionadaIndex = parseInt(botaoSelecionado.dataset.index);
+            const perguntaAtual = perguntas[perguntaAtualIndex];
+            const respostaCorretaIndex = perguntaAtual.respostaCorreta;
+
+            if (respostaSelecionadaIndex === respostaCorretaIndex) {
+                botaoSelecionado.classList.add('correta');
+                feedbackMensagem.textContent = "Você acertou!";
+                pontuacao++;
+            } else {
+                botaoSelecionado.classList.add('incorreta');
+                respostaBotoes[respostaCorretaIndex].classList.add('correta');
+                feedbackMensagem.textContent = `Que pena! A resposta correta era: ${perguntaAtual.respostas[respostaCorretaIndex]}.`;
+            }
+
+            feedbackContainer.classList.remove('oculto');
+            proximaPerguntaBtn.classList.remove('oculto');
+            respostaBotoes.forEach(btn => btn.removeEventListener('click', verificarResposta)); 
+        }
+
+        function resetRespostas() {
+            respostaBotoes.forEach(btn => {
+                btn.classList.remove('correta');
+                btn.classList.remove('incorreta');
+            });
+        }
+
+        function exibirResultadoFinal() {
+            jogoContainer.classList.add('oculto');
+            resultadoFinal.classList.remove('oculto');
+            mensagemResultado.textContent = `Você acertou ${pontuacao} de ${perguntas.length} perguntas! `;
+            oculto.classList.remove('oculto');
+        }
+
+        proximaPerguntaBtn.addEventListener('click', () => {
+            perguntaAtualIndex++;
+            exibirProximaPergunta();
+        });
+
+        iniciarJogoBtn.addEventListener('click', iniciarJogo);
+    });
+</script>
+
